@@ -6,4 +6,5 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public interface AlunoRepository extends JpaRepository <Aluno, Long> {
+//JpaRepository fornece métodos para executar operações comuns em um bd sem usar sql manualmente
 }

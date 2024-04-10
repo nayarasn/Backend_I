@@ -14,10 +14,10 @@ import java.util.Optional;
 public class AlunoService {
 
     @Autowired
-    AlunoRepository alunoRepository; //fazendo a injeção de dependencia do repositor em service p/ poder se conectar ao BD
+    AlunoRepository alunoRepository; //injeção de dependencia do repository em service para se conectar ao bd
 
     public void create(Aluno aluno) {
-        alunoRepository.save(aluno); //puxando as informações do model aluno e atribuindo ao banco de dados atravez do repository
+        alunoRepository.save(aluno); //puxando as informações do model aluno e atribuindo ao bd atravez do repository
     }
 
     public List<Aluno> findAll() { //findAll é para busca todos os alunos
@@ -28,13 +28,13 @@ public class AlunoService {
         return alunoRepository.findById(id);
     }
 
-    public void update(Long id, Aluno aluno) { //puxando o aluno do BD para editar na memoria ram e depois devolver para o BD
-        Optional<Aluno> alunoFronDb = findById(id);
-        if (alunoFronDb.isEmpty()) { //condição paraquando o parametro de aluno for nulo ou não existir no BD
+    public void update(Long id, Aluno aluno) { //puxando o aluno do bd para editar na memoria ram e depois devolver para o bd
+        Optional<Aluno> alunoFromDb = findById(id);
+        if (alunoFromDb.isEmpty()) { //condição para quando o parametro de aluno for nulo ou não existir no bd
             throw  new ResponseStatusException(HttpStatus.NOT_FOUND, "Aluno não encontrado");
         }
 
-        Aluno alunoUpdated = alunoFronDb.get();
+        Aluno alunoUpdated = alunoFromDb.get();
 
         alunoUpdated.setName(aluno.getName());
         alunoUpdated.setEmail(aluno.getEmail());

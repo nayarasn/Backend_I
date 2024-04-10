@@ -28,22 +28,23 @@ public class AlunoController {
         return alunoService.findAll();
     }
 
-    @GetMapping("/{id}") //o id fica entre chaves pois é um parametros
+    @GetMapping("/{id}") //o id fica entre chaves pois é um parametro
     @ResponseStatus(HttpStatus.OK)
     public Optional<Aluno> findById(@PathVariable Long id) { //como no front end nesse caso insonmia vai ter que busca um parametro // algum numero de id que retorna as informações, precisa coloco pathVariable
         return alunoService.findById(id);
     }
+    //PathVariable indica que um parâmetro de método específico deve ser vinculado a uma parte específica do URI da solicitação
 
     @PutMapping("/{id}")
     @ResponseStatus(HttpStatus.NO_CONTENT)
     public void update(@RequestBody Aluno aluno, @PathVariable Long id) {
-        alunoService.update(id, aluno);  //devolvendo o aluno atualizado para o BD
+        alunoService.update(id, aluno);  //devolvendo o aluno atualizado para o bd
     }
 
     @DeleteMapping("/{id}")
     @ResponseStatus(HttpStatus.NO_CONTENT)
     public void deleteById(@PathVariable Long id) { // o PathVaruable converte o Id de verbo Http para Id de Java
-        alunoService.deleteById(id); //deletando o aluno do BD
+        alunoService.deleteById(id);
     }
 
 }
